@@ -8,31 +8,62 @@ body{background-color:#FAF9F6;
     font-family:Roboto,sans-serif}.logo{width:200px}
 
 
+
+
 /* Aligning logo and image*/
-
-
 .logo {
     vertical-align: top;
     display: inline-block;
-    margin-top: 60px;
+    margin-top: 80px;
     max-width: 50%;
     }
-.image {
+
+
+.image{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
-}
-
-.menu{
-    padding-top: 20px;
-}
-
-a{text-decoration: none;
+    max-width: 40%;
     margin-top: 50px;
 }
 
+.menu{
+    padding-top: 4%;
+    font-weight: 100;
+    clear:left;
+
+
+}
+
+/*_Links_______________________________________________________________________________*/
+
+a{
+    text-decoration: none;
+    margin-top: 100px;
+}
+
+
+
+
+/* Changing link colours */
 a:link{color: black;}
 a:visited{color: black;}
-a:hover{background-color: black;color: white;}
 
+
+
+/* Link hover background */
+a:hover{background-color: black;color: white;}
+a:hover span{display:none}
+.link1:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ PROJECTS +";}
+.link2:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ INSTAGRAM +";}
+.link3:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ YOUTUBE +";}
+.link4:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ TWITTER +";}
+
+
+.footer{
+    width:100%;
+    position:fixed;
+    bottom:60px;
+    text-align:center;
+    
+}
