@@ -38,12 +38,11 @@ a:link{color: black;}
 a:visited{color: black;}
 
 /* Link hover background */
-a:hover{background-color: black;color: white;}
 a:hover span{display:none}
-#link1:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ PROJECTS +";}
-#link2:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ INSTAGRAM +";}
-#link3:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ YOUTUBE +";}
-#link4:hover:after{padding-left: 0.5%;padding-right: 0.5%;content: "+ TWITTER +";}
+#link1:hover:after{background-color: black;color: white;padding-left: 0.5%;padding-right: 0.5%;content: "+ PROJECTS +";}
+#link2:hover:after{background-color: black;color: white;padding-left: 0.5%;padding-right: 0.5%;content: "+ INSTAGRAM +";}
+#link3:hover:after{background-color: black;color: white;padding-left: 0.5%;padding-right: 0.5%;content: "+ YOUTUBE +";}
+#link4:hover:after{background-color: black;color: white;padding-left: 0.5%;padding-right: 0.5%;content: "+ TWITTER +";}
 
 .footer{
     width:100%;
