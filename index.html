@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>leeonleee</title>
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">           
+      <link rel="stylesheet" href="dist/style.css">
+    </head>
+
+  <style>
+    body{background-color: #F5F5F5;color: black;}
+    .dark-mode{background-color: #171717;color: #F5F5F5;}
+    .light-mode{background-color: #F5F5F5;color: #171717;}
+  </style>
+
+<body>
+
+  <div class="header">
+    <div class="header-img">
+      <a href=""><img class="lightmode" src="img/logo-black.png" width="500" style="padding:15px 0px 15px; color:black;"></a>
+      <a href=""><img class="darkmode" src="img/logo-white.png" width="500" style="padding:15px 0px 15px; color:black;"></a>
+    </div>
+  </div>
+
+
+    <div>
+      <button onclick="darkMode()">Darkmode</button>
+    </div>
+    <script>
+      function darkMode() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+    </script>
+
+
+
+
+
+</body>
+
+
+
+</html>
