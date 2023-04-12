@@ -17,7 +17,7 @@ a:hover {
 }
 
 #logo {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 nav {
@@ -195,6 +195,10 @@ button[type="submit"]:hover {
 
 .dark-mode a {
     color: #fff;
+}
+
+.dark-mode h3 {
+    color: lightgrey;
 }
 
 .dark-mode footer {
