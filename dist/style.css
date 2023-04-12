@@ -216,3 +216,7 @@ button[type="submit"]:hover {
     vertical-align: top;
     padding-top: 5px;
 }
+
+#dark_mode_toggle:hover {
+    cursor: pointer;
+}
