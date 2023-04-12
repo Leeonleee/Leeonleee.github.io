@@ -1,26 +1,14 @@
-// function toggle_dark_mode() {
-//     var element = document.body;
-//     element.classList.toggle("dark-mode");
-//  }
-
-// function toggle_dark_mode() {
-//     var element = document.body;
-//     element.classList.toggle("dark-mode");
-//     if (element.classList.contains("dark-mode")) {
-//       sessionStorage.setItem("darkModeEnabled", "true");
-//     } else {
-//       sessionStorage.removeItem("darkModeEnabled");
-//     }
-//   }
-  
 
 function toggle_dark_mode() {
     var element = document.body;
     element.classList.toggle("dark-mode");
+    var image = document.getElementById("dark_mode_toggle");
     if (element.classList.contains("dark-mode")) {
       localStorage.setItem("darkModeEnabled", "true");
+      image.src = "/images/moon.png";
     } else {
       localStorage.removeItem("darkModeEnabled");
+      image.src = "/images/sun.png";
     }
   }
   
@@ -33,9 +21,10 @@ function toggle_dark_mode() {
     if (dark_mode_query !== "") {
       element.classList.add("dark-mode");
     }
-    document.querySelectorAll("nav a").forEach(function(link) {
-      link.href += dark_mode_query;
-    });
+    document.querySelectorAll("nav a:not([onclick])").forEach(function(link) {
+        link.href += dark_mode_query;
+      });      
   });
+  
   
   

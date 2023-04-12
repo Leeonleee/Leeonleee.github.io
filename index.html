@@ -18,9 +18,12 @@
       <a id="logo" href="/index.html">Leon Lee</a>
 
       <div id="nav_to_pages">
-        <a href="/index.html#about_me" onclick="smoothScroll('#about_me')">About</a>
+        <!-- <a href="/index.html#about_me" onclick="smoothScroll('#about_me')">About</a> -->
+        <a href="/index.html#about_me" onclick="event.preventDefault(); smoothScroll('#about_me')">About</a>
         <a href="/pages/projects.html">Projects</a>
         <a href="/pages/contact.html">Contact</a>
+
+        
       </div>
      
     </nav>
@@ -56,16 +59,14 @@
 
   <footer>
 
-    <h2>Want to get in touch?</h2>
     <div class="social_icons">
       <a href="https://www.instagram.com/leeonleee/" class="social_icon" target="_blank">Instagram</a>
       <a href="https://www.linkedin.com/in/leonlee1219/" class="social_icon" target="_blank">LinkedIn</a>
       <a href="/pages/contact.html" class="social_icon" target="_blank">Email</a>
     </div>
     <div>
-      <button onclick="toggle_dark_mode()">Toggle dark mode</button>
+      <img id="dark_mode_toggle" src="/images/sun.png" alt="Toggle dark mode" onclick="toggle_dark_mode()">
     </div>
   </footer>
-  <script src="script.js"></script>
 </body>
 </html>

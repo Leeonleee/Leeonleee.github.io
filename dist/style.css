@@ -35,20 +35,32 @@ body {
     padding: 20px 30px;
     font-family: 'Roboto', sans-serif;
     color: #212121;
+
 }
 
 footer {
     margin-top: 100px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+    
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
 }
 
 .social_icon {
+    display: inline-block;
     margin-right: 30px;
+    vertical-align: top;
 }
 
 h1 {
@@ -185,3 +197,18 @@ button[type="submit"]:hover {
     color: #fff;
 }
 
+.dark-mode footer {
+    background-color: #222;
+}
+
+.dark-mode label{
+    color: #fff;
+}
+
+#dark_mode_toggle {
+    display: inline-block;
+    margin: 0 10px;
+    width:1.4rem;
+    vertical-align: top;
+    padding-top: 5px;
+}
