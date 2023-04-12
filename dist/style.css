@@ -222,3 +222,23 @@ button[type="submit"]:hover {
     cursor: pointer;
 
 }
+
+
+/* Welcome animation */
+.welcome_text {
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
