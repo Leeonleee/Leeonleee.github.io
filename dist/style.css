@@ -46,7 +46,7 @@ footer {
     width: 100%;
     background-color: #fff;
     padding-top: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 7px;
     text-align: center;
     
 }
@@ -61,6 +61,7 @@ h2 {
     display: inline-block;
     margin-right: 30px;
     vertical-align: top;
+    font-weight: 400;
 }
 
 h1 {
@@ -219,4 +220,5 @@ button[type="submit"]:hover {
 
 #dark_mode_toggle:hover {
     cursor: pointer;
+
 }
