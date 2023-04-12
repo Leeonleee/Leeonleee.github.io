@@ -13,7 +13,7 @@ a {
 }
 
 a:hover {
-    color: #8c8c8c;
+    color: #C3B1E1;
 }
 
 #logo {
@@ -120,7 +120,11 @@ p {
 
 /* Projects */
 #project_heading {
-    margin-bottom: 80px;
+    margin-bottom: 20px;
+}
+
+#github_message {
+    margin-bottom: 40px;
 }
 
 .proejct_sub_heading {
@@ -196,6 +200,10 @@ button[type="submit"]:hover {
 
 .dark-mode a {
     color: #fff;
+}
+
+.dark-mode a:hover {
+    color: #C3B1E1;
 }
 
 .dark-mode h3 {
