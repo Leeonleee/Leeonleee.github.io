@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>leeonleee</title>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">   
-  </head>
 
-  <body>
-    <link rel="stylesheet" href="dist/style.css">
-    <!-- Logo and image-->
-    <div class="parent">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Home</title>
+  <link href="dist/reset.css" rel="stylesheet" type="text/css"/>
+  <link href="dist/style.css" rel="stylesheet" type="text/css"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
 
-      <a href="https://www.leeonleee.com/">
-      <img class="logo" src="img/logo.png"/>
-      </a>
-      <img class="image" src="img/image.gif"
-        width="150"
-        height="150"/>
+<body>
+  <header>
+    <nav>
+      <a id="logo" href="index.html">Leon</a>
+
+      <div id="nav_to_pages">
+        <a href="#about_me">About</a>
+        <a href="pages/projects.html">Projects</a>
+        <a href="pages/contact.html">Contact</a>
+      </div>
+     
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero banner -->
+    <section class="text_and_image_content">
+      <div>
+        <img src="images/janedoe.png" alt="my photo">
+      </div>
+      <div class="intro_text_container">
+        <h1>Hello!</h1>
+        <h2>I'm Leon, a second year computer science student</h2>
+        <h3>Welcome to my portfolio site! Here you can find more information about me and my projects</h3>
+      </div>
+    </section>
+
+    <!-- About me -->
+    <section id="about_me">
+      <h2>About Me</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+        in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <h2>Want to get in touch?</h2>
+    <div class="social_icons">
+      <a href="https://www.instagram.com/gdscusyd/" class="social_icon">Instagram</a>
+      <a href="https://www.linkedin.com/company/gdsc-usyd/" class="social_icon">LinkedIn</a>
+      <a href="contact.html" class="social_icon">Contact</a>
     </div>
-
-    <!-- Links -->
-    <div class="links">
-      <div><a id="link1" data-replace="+ PROJECTS +"href=""><span>PROJECTS</span></a></div>
-      <p></p>
-      <div><a id="link2" href="https://www.instagram.com/leeonleee/" target="_blank"><span>INSTAGRAM</span></a></div>
-      <p></p>
-      <div><a id="link3" href="https://www.youtube.com/channel/UCW1I3P107XrA6_0YgRlGsZg" target="_blank"><span>YOUTUBE</span></a></div>
-      <p></p>
-      <div><a id="link4"href="https://twitter.com/lsy1219_03" target="_blank"><span>TWITTER</span></a></div>
-    </div>
-
-
-
-    <div class="footer">
-      <a class="footerLink"href="mailto:contact@leeonleee.com" target="_blank">CONTACT</a>
-    </div>
-
-
-  </body>
-
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
-
-
-
