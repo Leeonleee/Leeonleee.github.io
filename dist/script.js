@@ -18,13 +18,17 @@ function toggle_dark_mode() {
   document.addEventListener("DOMContentLoaded", function() {
     var element = document.body;
     var dark_mode_query = localStorage.getItem("darkModeEnabled") === "true" ? "?darkModeEnabled=true" : "";
+    var image = document.getElementById("dark_mode_toggle");
     if (dark_mode_query !== "") {
       element.classList.add("dark-mode");
+      image.src = "/images/moon.png";
+
     }
     document.querySelectorAll("nav a:not([onclick])").forEach(function(link) {
         link.href += dark_mode_query;
       });      
   });
   
+
   
   
