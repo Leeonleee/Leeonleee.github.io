@@ -109,6 +109,7 @@ section {
 }
 
 #about_me {
+    
     text-align: center;
 }
 
@@ -185,6 +186,7 @@ button[type="submit"] {
     cursor: pointer;
     font-size: 16px;
     align-self: flex-start;
+    margin-bottom: 100px;
 }
 
 button[type="submit"]:hover {
@@ -256,3 +258,76 @@ button[type="submit"]:hover {
 .letter:hover {
     color: #C3B1E1;
 }
+
+
+/* Page open animation */
+.animate-top {
+    animation: fade-in-top 0.5s ease-out;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.animate-bottom {
+    animation: fade-in-bottom 0.5s ease-out;
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.animate-left {
+    animation: fade-in-left 0.5s ease-out;
+    opacity: 0;
+    transform: translateX(0%);
+}
+  
+.animate-right {
+    animation: fade-in-right 0.5s ease-out;
+    opacity: 0;
+    transform: translateX(0%);
+}
+  
+@keyframes fade-in-top {
+    from {
+      opacity: 0;
+      transform: translateY(-200%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(200%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-200%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(200%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  
+
