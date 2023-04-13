@@ -87,7 +87,10 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 100px;
+
 }
+
+
 
 .intro_text_container {
     width: 150%;
@@ -109,12 +112,9 @@ section {
 }
 
 #about_me {
-    
-  
-    max-height: 400px; /* Adjust the height as needed */
-    overflow-y: scroll;
       
     text-align: center;
+
 }
 
 p {
