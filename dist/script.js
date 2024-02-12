@@ -29,28 +29,28 @@ function toggle_dark_mode() {
 
   
 // Animation when loading site
-window.onload = function() {
-  var leftElements = document.getElementsByClassName("animate-left");
-  for (var i = 0; i < leftElements.length; i++) {
-    leftElements[i].style.opacity = "1";
-    leftElements[i].style.transform = "translateX(0)";
-  }
+// window.onload = function() {
+//   var leftElements = document.getElementsByClassName("animate-left");
+//   for (var i = 0; i < leftElements.length; i++) {
+//     leftElements[i].style.opacity = "1";
+//     leftElements[i].style.transform = "translateX(0)";
+//   }
 
-  var rightElements = document.getElementsByClassName("animate-right");
-  for (var i = 0; i < rightElements.length; i++) {
-    rightElements[i].style.opacity = "1";
-    rightElements[i].style.transform = "translateX(0)";
-  }
+//   var rightElements = document.getElementsByClassName("animate-right");
+//   for (var i = 0; i < rightElements.length; i++) {
+//     rightElements[i].style.opacity = "1";
+//     rightElements[i].style.transform = "translateX(0)";
+//   }
 
-  var topElements = document.getElementsByClassName("animate-top");
-  for (var i = 0; i < topElements.length; i++) {
-    topElements[i].style.opacity = "1";
-    topElements[i].style.transform = "translateY(0)";
-  }
+//   var topElements = document.getElementsByClassName("animate-top");
+//   for (var i = 0; i < topElements.length; i++) {
+//     topElements[i].style.opacity = "1";
+//     topElements[i].style.transform = "translateY(0)";
+//   }
 
-  var bottomElements = document.getElementsByClassName("animate-bottom");
-  for (var i = 0; i < bottomElements.length; i++) {
-    bottomElements[i].style.opacity = "1";
-    bottomElements[i].style.transform = "translateY(0)";
-  }
-};
+//   var bottomElements = document.getElementsByClassName("animate-bottom");
+//   for (var i = 0; i < bottomElements.length; i++) {
+//     bottomElements[i].style.opacity = "1";
+//     bottomElements[i].style.transform = "translateY(0)";
+//   }
+// };
