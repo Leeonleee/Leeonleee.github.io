@@ -265,7 +265,7 @@ button[type="submit"]:hover {
 
 
 /* Page open animation */
-.animate-top {
+/* .animate-top {
     animation: fade-in-top 0.5s ease-out;
     opacity: 0;
     transform: translateY(100%);
@@ -334,4 +334,4 @@ button[type="submit"]:hover {
   }
   
   
-
+ */

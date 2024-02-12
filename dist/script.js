@@ -11,9 +11,6 @@ function toggle_dark_mode() {
       image.src = "/images/sun.png";
     }
   }
-  
-  
-
 
   document.addEventListener("DOMContentLoaded", function() {
     var element = document.body;
