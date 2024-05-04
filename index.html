@@ -1,94 +1,269 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Home</title>
-  <link href="/dist/reset.css" rel="stylesheet" type="text/css"/>
-  <link href="/dist/style.css" rel="stylesheet" type="text/css"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="/dist/script.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leon Lee</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("user_K1PoFs8pB2YVWStDxrUls");
+    })();
+  </script>
 </head>
 
 <body>
-  <header>
+  <section id="landing-page" onmousemove="moveBackground(event)">
     <nav>
-      <a id="logo" href="/index.html">Leon Lee</a>
-
-      <div id="nav_to_pages">
-        <a href="/index.html#about_me" onclick="smoothScroll('#about_me')">About</a>
-        <!-- <a href="/index.html#about_me" onclick="event.preventDefault(); smoothScroll('#about_me')">About</a> -->
-        <a href="/pages/projects.html">Projects</a>
-        <a href="/pages/contact.html">Contact</a>
-
-        
-      </div>
-     
+      <figure>
+        <img id="personal-logo" src="./assets/logo.png" alt="">
+      </figure>
+      <ul class="nav__link--list">
+        <li class="nav__link" onclick="toggleModal()">
+          <a href="#" class="
+            nav__link--anchor
+            link__hover-effect
+            link__hover-effect--black
+          ">About</a>
+        </li>
+        <li class="nav__link">
+          <a href="#projects" class="
+            nav__link--anchor
+            link__hover-effect
+            link__hover-effect--black
+          ">Projects</a>
+        </li>
+        <li class="nav__link" onclick="toggleModal()">
+          <a href="#" class="
+            nav__link--anchor
+            link__hover-effect
+            link__hover-effect--black
+          ">Contact</a>
+        </li>
+        <li class="nav__link click" onclick="toggleContrast()">
+          <a href="#" class="
+            nav__link--anchor
+            link__hover-effect
+            link__hover-effect--black
+          "><i class="fas fa-adjust"></i></a>
+        </li>
+      </ul>
     </nav>
-  </header>
-
-  <main>
-    <!-- Hero banner -->
-    <section class="text_and_image_content">
-      <div>
-        <img id="profile_picture" class="animate-left" src="/images/stick_figure.png" alt="my photo">
+    <header class="header">
+      <div class="header__content">
+        <h1 class="title">Hey</h1>
+        <h1 class="title orange">I'm Leon.</h1>
+        <p class="header__para">
+          I'm a <b class="orange">Academic Tutor & Computer Science Student</b> with a strong passion for software engineering and teaching
+          <br>
+          Here's a bit more <b class="orange click" onclick="toggleModal()">about me</b>.
+        </p>
+        <div class="social__list">
+          <a href="https://www.linkedin.com/in/leonlee1219/" target="_blank" class="social__link click">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/Leeonleee" target="_blank" class="social__link click">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="./assets/Leon Lee Resume.pdf" target="_blank" class="social__link click">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+        </div>
       </div>
-      <div class="intro_text_container animate-right">
-        <!-- <h1 class="welcome_text">Welcome!</h1> -->
-        <h1 class="welcome_text">
-          <span class="letter">W</span>
-          <span class="letter">e</span>
-          <span class="letter">l</span>
-          <span class="letter">c</span>
-          <span class="letter">o</span>
-          <span class="letter">m</span>
-          <span class="letter">e</span>
-          <span class="letter">!</span>
-        </h1>
+    </header>
+    <a href="#">
+      <button class="mail__btn click" onclick="toggleModal()">
+        <i class="fas fa-envelope"></i>
+      </button>
+    </a>
+    <a href="#projects" class="scroll">
+      <div class="scroll__icon click"></div>
+    </a>
+    <div class="modal">
+      <div class="modal__half modal__about">
+        <h3 class="modal__title modal__title--about">Here's a bit about me.</h3>
+        <h4 class="modal__sub-title modal__sub-title--about">Academic Tutor & Computer Science Student</h4>
+        <p class="modal__para">
+          I'm a 20 year-old <b class="orange">academic tutor & computer science student</b> at 
+          <b class="orange">The University of Sydney</b>
+          <br>
+          I love both teaching and learning about <b class="orange">computer science</b>
+          <br>
+          I'm currently looking for <b class="orange">Software Engineering</b> opportunities
+        </p>
+        <div class="modal__languages">
+          <figure class="modal__language">
+            <img class="modal__language--img"
+              src="./assets/skills/python.svg" alt="">
+            <span class="language__name">Python</span>
+          </figure>
 
-        <h2>I'm Leon, a second year computer science student</h2>
-        <h3>Welcome to my portfolio site! Here you can find more information about me and my projects</h3>
+          <figure class="modal__language">
+            <img class="modal__language--img" src="./assets/skills/java.svg" alt="">
+            <span class="language__name">Java</span>
+          </figure>
+
+          <figure class="modal__language">
+            <img class="modal__language--img" src="./assets/skills/c.svg" alt="">
+            <span class="language__name">C</span>
+          </figure>
+
+          <figure class="modal__language">
+            <img class="modal__language--img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" alt="">
+            <span class="language__name">PostgreSQL</span>
+          </figure>
+
+          <figure class="modal__language">
+            <img class="modal__language--img"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+              alt="">
+            <span class="language__name">HTML</span>
+          </figure>
+          <figure class="modal__language">
+            <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png"
+              alt="">
+            <span class="language__name">CSS</span>
+          </figure>
+          <figure class="modal__language">
+            <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png"
+              alt="">
+            <span class="language__name">JavaScript</span>
+          </figure>
+        </div>
       </div>
-    </section>
-
-    <!-- About me -->
-    <section id="about_me">
-      <h2 class="animate-left">About Me</h2>
-      <!-- <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-        in culpa qui officia deserunt mollit anim id est laborum.
-      </p> -->
-
-      <p class="animate-right">
-        I'm a computer science student with a passion for coding and problem solving.
-        I'm always seeking new challenges and opportunities to learn and grow as a developer. Throughout my studies, I've gained experience in a wide range of programming languages including Java, Python, and C.
-        In my free time, I enjoy working on personal projects that allow me to apply my skills and explore new areas of interest.
-        Some of my recent projects include a RISC-V emulator created using C and a 2d game created using Java.
-        I'm excited to continue my journey as a developer and am always looking for new challenges and opportunities to learn and grow.
-        Thank you for taking the time to check out my portfolio website!
-
-      </p>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="social_icons">
-      <a href="https://www.instagram.com/leeonleee/" class="social_icon" target="_blank">Instagram</a>
-      <a href="https://www.linkedin.com/in/leonlee1219/" class="social_icon" target="_blank">LinkedIn</a>
-      <a href="/pages/contact.html" class="social_icon" target="_blank">Email</a>
+      <div class="modal__half modal__contact">
+        <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+        <h3 class="modal__title modal__title--contact">
+          Let's have a chat!
+        </h3>
+        <h3 class="modal__sub-title modal__sub-title--contact">
+          I'm currently open to new opportunities.
+        </h3>
+        <form id="contact__form" onsubmit="contact(event)">
+          <div class="form__item">
+            <label class="form__item--label">Name</label>
+            <input class="input" name="user_name" type="text" required></input>
+          </div>
+          <div class="form__item">
+            <label class="form__item--label">Email</label>
+            <input class="input" name="user_email" type="email" required></input>
+          </div>
+          <div class="form__item">
+            <label class="form__item--label">Message</label>
+            <textarea class="input" name="message" type="text" required></textarea>
+          </div>
+          <button id="contact__submit" class="form__submit">
+            Send it my way
+          </button>
+        </form>
+        <div class="modal__overlay modal__overlay--loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div class="modal__overlay modal__overlay--success">
+          Thanks for the message! Looking forward to speaking to you soon.
+        </div>
+      </div>
     </div>
-    <div>
-      <img id="dark_mode_toggle" title="Toggle Dark/Light Mode" src="/images/sun.png" alt="Toggle dark mode" onclick="toggle_dark_mode()">
+    <img src="./assets/semi circle.svg" class="shape shape--0">
+    <img src="./assets/circle.svg" class="shape shape--1">
+    <img src="./assets/squiggly.svg" class="shape shape--2">
+    <img src="./assets/circle.svg" class="shape shape--3">
+    <img src="./assets/triangle.svg" class="shape shape--4">
+    <img src="./assets/circle.svg" class="shape shape--5">
+    <img src="./assets/squiggly.svg" class="shape shape--6">
+    <img src="./assets/circle.svg" class="shape shape--7">
+    <img src="./assets/semi circle.svg" class="shape shape--8">
+  </section>
+  <section id="projects">
+    <div class="container">
+      <div class="row">
+        <h1 class="section__title">
+          Here are some of my <span class="orange">projects</span>
+        </h1>
+        <ul class="project__list">
+          <li class="project">
+            <div class="project__wrapper">
+              <img src="./assets/projects/portfolio.png" class="project__img" alt="">
+              <div class="project__wrapper--bg"></div>
+              <div class="project__description">
+                <h3 class="project__description--title">
+                  Portfolio Website
+                </h3>
+                <h4 class="project__description--sub-title">
+                  HTML, CSS, JavaScript
+                </h4>
+                <p class="project__description--para">
+                  Developed a personal portfolio website using HTML, CSS and Javascript, ensuring a seamless user
+                  experience through the implementation of UI/UX principles. Meticulously tested the website across
+                  multiple web browsers and devices to guarantee compatability and performance. Additionally, I enhanced
+                  user accessibility features such as a dark mode toggle, prioritising both functionality and aesthetic appeal
+                </p>
+                <div class="project__description--links">
+                  <a href="https://github.com/Leeonleee/Leeonleee.github.io/" class="project__description--link" target="_blank">
+                    <i class="fas fa-link"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row footer__row">
+        <a href="#" class="footer__anchor">
+          <figure class="footer__logo">
+            <img src="./assets/logo.png" class="footer__logo--img" alt="">
+          </figure>
+          <span class="footer__logo--popper">
+            Top
+            <i class="fas fa-arrow-up"></i>
+          </span>
+        </a>
+        <div class="footer__social--list">
+          <a href="https://github.com/Leeonleee" class="
+          footer__social--link
+          link__hover-effect
+          link__hover-effect--white
+        ">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/leonlee1219/" target="_blank" class="
+          footer__social--link
+          link__hover-effect
+          link__hover-effect--white
+        ">
+            LinkedIn
+          </a>
+          <a href="#" onclick="toggleModal()" class="
+          footer__social--link
+          link__hover-effect
+          link__hover-effect--white
+        ">
+            Contact
+          </a>
+          <a href="./assets/Leon Lee Resume.pdf" target="_blank" class="
+          footer__social--link
+          link__hover-effect
+          link__hover-effect--white
+        ">
+            Resume
+          </a>
+        </div>
+        <div class="footer__copyright">Copyright &copy; 2024 Leon Lee</div>
+      </div>
     </div>
   </footer>
 </body>
+
 </html>
