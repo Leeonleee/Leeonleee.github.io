@@ -25,10 +25,10 @@ const setup = [
 const techInterests = [
     {
         title: "Linux",
-        description: "Arch btw. Dotfiles on Github.",
+        description: "Arch btw.",
         details: {
-            blurb: "Currently experimenting with minimal window managers and a productivity-focused workflow.",
-            highlights: ["Tiling WM setup", "Custom scripts", "Terminal-centric tools"],
+            blurb: "Currently experimenting with a productivity-focused workflow.",
+            highlights: ["Dotfiles on GitHub"],
             photoSlots: 3,
         },
     },
@@ -36,25 +36,25 @@ const techInterests = [
         title: "Mechanical Keyboards",
         description: "Old hobby, not as active recently.",
         details: {
-            blurb: "A mix of vintage boards and modern customs, tuned for feel and sound.",
-            highlights: ["Switch testing", "Keycap sets", "Layout experiments"],
-            photoSlots: 3,
+            blurb: "Some of the keyboards that I still own and use regularly.",
+            highlights: ["HHKB Professional Hybrid Type-S", "TGR Jane V2 with MX Blacks", "Wooting 60HE"],
+            photoSlots: 0,
         },
     },
 ];
 
-const photoCategoryOrder = ["Nature", "Architecture"];
+const photoCategoryOrder = ["Nature", "Architecture", "Portraits"];
 
 type PhotoMap = Record<string, { url: string; name: string }[]>;
 
-const photoFiles = import.meta.glob("../assets/photography/*/*.{jpg,jpeg,png,webp}", {
+const photoFiles = import.meta.glob("../assets/personal/photography/*/*.{jpg,jpeg,png,webp}", {
     eager: true,
     import: "default",
 });
 
 const photosByCategory: PhotoMap = Object.entries(photoFiles).reduce<PhotoMap>(
     (acc, [path, mod]) => {
-        const match = path.match(/..\/assets\/photography\/([^/]+)\/([^/]+)$/);
+        const match = path.match(/..\/assets\/personal\/photography\/([^/]+)\/([^/]+)$/);
         if (!match) return acc;
         const [, category, filename] = match;
         if (!acc[category]) acc[category] = [];
@@ -209,43 +209,40 @@ const Personal = () => {
                             const isActive = name === activeCategory;
                             const count = photosByCategory[name]?.length ?? 0;
                             return (
-                            <div
-                                key={name}
-                                className={`border-2 border-personal-foreground p-4 text-center transition-colors duration-200 cursor-pointer animate-fade-in ${isActive ? "bg-personal-foreground text-personal" : "hover:bg-personal-foreground hover:text-personal"}`}
-                                style={{ animationDelay: `${index * 100}ms` }}
-                                onClick={() =>
-                                    setActiveCategory(isActive ? "" : name)
-                                }
-                            >
-                                <span className="text-brutal-xs opacity-60 block mb-1">{count} photos</span>
-                                <span className="text-lg font-bold uppercase">{name}</span>
-                            </div>
+                                <div
+                                    key={name}
+                                    className={`border-2 border-personal-foreground p-4 text-center transition-colors duration-200 cursor-pointer animate-fade-in ${isActive ? "bg-personal-foreground text-personal" : "hover:bg-personal-foreground hover:text-personal"}`}
+                                    style={{ animationDelay: `${index * 100}ms` }}
+                                    onClick={() => {
+                                        if (count === 0) return;
+                                        setActiveCategory(isActive ? "" : name);
+                                    }}
+                                >
+                                    <span className="text-brutal-xs opacity-60 block mb-1">
+                                        {count} {count === 1 ? "photo" : "photos"}
+                                    </span>
+                                    <span className="text-lg font-bold uppercase">{name}</span>
+                                </div>
                             );
                         })}
                     </div>
 
                     {/* Photo grid */}
-                    {activeCategory && (
+                    {activeCategory && activePhotos.length > 0 && (
                         <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
-                            {activePhotos.length === 0 ? (
-                                <div className="w-full border-2 border-personal-foreground p-6 text-center text-sm opacity-70">
-                                    No photos found for {activeCategory}. Add files to src/assets/photography/{activeCategory}/01-06.
+                            {activePhotos.map((photo) => (
+                                <div
+                                    key={photo.name}
+                                    className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
+                                >
+                                    <img
+                                        src={photo.url}
+                                        alt={`${activeCategory} ${photo.name}`}
+                                        className="h-auto w-full"
+                                        loading="lazy"
+                                    />
                                 </div>
-                            ) : (
-                                activePhotos.map((photo) => (
-                                    <div
-                                        key={photo.name}
-                                        className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
-                                    >
-                                        <img
-                                            src={photo.url}
-                                            alt={`${activeCategory} ${photo.name}`}
-                                            className="h-auto w-full"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))
-                            )}
+                            ))}
                         </div>
                     )}
                 </div>
