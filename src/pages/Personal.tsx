@@ -169,7 +169,7 @@ const Personal = () => {
                     </div>
 
                     {/* Photo grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
                         {activePhotos.length === 0 ? (
                             <div className="col-span-full border-2 border-personal-foreground p-6 text-center text-sm opacity-70">
                                 No photos found for {activeCategory}. Add files to src/assets/photography/{activeCategory}/01-06.
@@ -178,12 +178,12 @@ const Personal = () => {
                             activePhotos.map((photo) => (
                                 <div
                                     key={photo.name}
-                                    className="aspect-square border-2 border-personal-foreground overflow-hidden"
+                                    className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
                                 >
                                     <img
                                         src={photo.url}
                                         alt={`${activeCategory} ${photo.name}`}
-                                        className="h-full w-full object-cover"
+                                        className="h-auto w-full"
                                         loading="lazy"
                                     />
                                 </div>
