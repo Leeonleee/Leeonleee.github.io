@@ -94,6 +94,7 @@ const Personal = () => {
     const [activeTech, setActiveTech] = useState<string | null>(null);
 
     const [activeCategory, setActiveCategory] = useState("");
+    const [activeImage, setActiveImage] = useState<{ url: string; alt: string } | null>(null);
 
     const activePhotos = useMemo(
         () => photosByCategory[activeCategory] || [],
@@ -197,9 +198,16 @@ const Personal = () => {
                                         </div>
                                         <div className="columns-2 sm:columns-3 gap-3">
                                             {(techPhotosByTitle[interest.title] || []).map((photo) => (
-                                                <div
+                                                <button
+                                                    type="button"
                                                     key={photo.name}
-                                                    className="mb-3 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
+                                                    className="mb-3 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
+                                                    onClick={() =>
+                                                        setActiveImage({
+                                                            url: photo.url,
+                                                            alt: `${interest.title} ${photo.name}`,
+                                                        })
+                                                    }
                                                 >
                                                     <img
                                                         src={photo.url}
@@ -207,7 +215,7 @@ const Personal = () => {
                                                         className="h-auto w-full"
                                                         loading="lazy"
                                                     />
-                                                </div>
+                                                </button>
                                             ))}
                                         </div>
                                     </div>
@@ -258,9 +266,16 @@ const Personal = () => {
                     {activeCategory && activePhotos.length > 0 && (
                         <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
                             {activePhotos.map((photo) => (
-                                <div
+                                <button
+                                    type="button"
                                     key={photo.name}
-                                    className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
+                                    className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
+                                    onClick={() =>
+                                        setActiveImage({
+                                            url: photo.url,
+                                            alt: `${activeCategory} ${photo.name}`,
+                                        })
+                                    }
                                 >
                                     <img
                                         src={photo.url}
@@ -268,7 +283,7 @@ const Personal = () => {
                                         className="h-auto w-full"
                                         loading="lazy"
                                     />
-                                </div>
+                                </button>
                             ))}
                         </div>
                     )}
@@ -282,6 +297,38 @@ const Personal = () => {
                     <span className="text-brutal-xs opacity-60">Leon Lee</span>
                 </div>
             </footer>
+
+            {activeImage && (
+                <div
+                    className="fixed inset-0 z-50 bg-personal/90 backdrop-blur-sm flex items-center justify-center p-6 animate-fade-in"
+                    role="dialog"
+                    aria-modal="true"
+                    onClick={() => setActiveImage(null)}
+                    onKeyDown={(event) => {
+                        if (event.key === "Escape") setActiveImage(null);
+                    }}
+                    tabIndex={-1}
+                >
+                    <div className="max-w-6xl w-full" onClick={(event) => event.stopPropagation()}>
+                        <div className="flex justify-end mb-4">
+                            <button
+                                type="button"
+                                className="border-2 border-personal-foreground px-4 py-2 text-sm uppercase hover:bg-personal-foreground hover:text-personal transition-colors duration-200"
+                                onClick={() => setActiveImage(null)}
+                            >
+                                Close
+                            </button>
+                        </div>
+                        <div className="border-2 border-personal-foreground bg-personal/30 p-2">
+                            <img
+                                src={activeImage.url}
+                                alt={activeImage.alt}
+                                className="max-h-[80vh] w-full object-contain"
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
