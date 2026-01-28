@@ -319,12 +319,16 @@ const Personal = () => {
                                 Close
                             </button>
                         </div>
-                        <div className="border-2 border-personal-foreground bg-personal/30 p-2">
-                            <img
-                                src={activeImage.url}
-                                alt={activeImage.alt}
-                                className="max-h-[80vh] w-full object-contain"
-                            />
+                        <div className="flex justify-center">
+                            <div className="inline-block border-2 border-personal-foreground bg-personal p-2">
+                                <div className="border-2 border-white bg-white p-1">
+                                    <img
+                                        src={activeImage.url}
+                                        alt={activeImage.alt}
+                                        className="block max-h-[80vh] max-w-full h-auto w-auto"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
