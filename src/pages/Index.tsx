@@ -74,7 +74,7 @@ const Index = () => {
         </div>
 
         {/* Subtle grid overlay */}
-        <div className="absolute inset-0 grid-overlay opacity-[0.03] pointer-events-none" />
+        {/* <div className="absolute inset-0 grid-overlay opacity-[0.03] pointer-events-none" /> */}
       </Link>
     </div>
   );
