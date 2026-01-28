@@ -26,10 +26,20 @@ const techInterests = [
     {
         title: "Linux",
         description: "Arch btw. Dotfiles on Github.",
+        details: {
+            blurb: "Currently experimenting with minimal window managers and a productivity-focused workflow.",
+            highlights: ["Tiling WM setup", "Custom scripts", "Terminal-centric tools"],
+            photoSlots: 3,
+        },
     },
     {
         title: "Mechanical Keyboards",
         description: "Old hobby, not as active recently.",
+        details: {
+            blurb: "A mix of vintage boards and modern customs, tuned for feel and sound.",
+            highlights: ["Switch testing", "Keycap sets", "Layout experiments"],
+            photoSlots: 3,
+        },
     },
 ];
 
@@ -59,6 +69,8 @@ Object.values(photosByCategory).forEach((photos) => {
 });
 
 const Personal = () => {
+    const [activeTech, setActiveTech] = useState<string | null>(null);
+
     const [activeCategory, setActiveCategory] = useState(
         photoCategoryOrder.find((name) => (photosByCategory[name] || []).length > 0) ||
         photoCategoryOrder[0],
@@ -122,17 +134,62 @@ const Personal = () => {
                     <SectionTitle number="02" title="Tech" className="text-personal-foreground" />
 
                     <div className="grid md:grid-cols-2 gap-6">
-                        {techInterests.map((interest, index) => (
-                            <div
-                                key={interest.title}
-                                className="border-2 border-personal-foreground p-6 hover:bg-personal-foreground hover:text-personal group transition-colors duration-200 animate-fade-in"
-                                style={{ animationDelay: `${index * 100}ms` }}
-                            >
-                                <h3 className="text-xl font-bold uppercase mb-3">{interest.title}</h3>
-                                <p className="text-sm opacity-80 leading-relaxed">{interest.description}</p>
-                            </div>
-                        ))}
+                        {techInterests.map((interest, index) => {
+                            const isOpen = activeTech === interest.title;
+                            return (
+                                <button
+                                    key={interest.title}
+                                    type="button"
+                                    className="border-2 border-personal-foreground p-6 text-left hover:bg-personal-foreground hover:text-personal group transition-colors duration-200 animate-fade-in"
+                                    style={{ animationDelay: `${index * 100}ms` }}
+                                    onClick={() => setActiveTech(isOpen ? null : interest.title)}
+                                    aria-expanded={isOpen}
+                                >
+                                    <h3 className="text-xl font-bold uppercase mb-3">{interest.title}</h3>
+                                    <p className="text-sm opacity-80 leading-relaxed">{interest.description}</p>
+                                </button>
+                            );
+                        })}
                     </div>
+
+                    {activeTech && (
+                        <div className="mt-8 border-2 border-personal-foreground p-6 animate-fade-in">
+                            {techInterests
+                                .filter((interest) => interest.title === activeTech)
+                                .map((interest) => (
+                                    <div key={interest.title} className="grid md:grid-cols-2 gap-6">
+                                        <div>
+                                            <h4 className="text-lg font-bold uppercase mb-2">
+                                                {interest.title} Details
+                                            </h4>
+                                            <p className="text-sm opacity-80 leading-relaxed mb-4">
+                                                {interest.details.blurb}
+                                            </p>
+                                            <ul className="space-y-2 text-sm opacity-80">
+                                                {interest.details.highlights.map((item) => (
+                                                    <li
+                                                        key={item}
+                                                        className="pl-6 relative before:content-['—'] before:absolute before:left-0"
+                                                    >
+                                                        {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div className="grid grid-cols-3 gap-3">
+                                            {Array.from({ length: interest.details.photoSlots }).map((_, i) => (
+                                                <div
+                                                    key={i}
+                                                    className="aspect-square border-2 border-personal-foreground flex items-center justify-center text-brutal-xs opacity-50"
+                                                >
+                                                    [ PHOTO ]
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
