@@ -1,0 +1,219 @@
+import { ExternalLink, Github } from "lucide-react";
+import BackButton from "@/components/BackButton";
+import SectionTitle from "@/components/SectionTitle";
+
+const projects = [
+  {
+    id: 1,
+    title: "Midpoint",
+    description: "Full-stack web application. Calculates an optimal midpoint between users and generates an itinerary with recommended venues, simplifying social meetups. Winner of SYNCS Hack 2024",
+    tech: ["React", "Node.js", "Express.js", "Google Places API", "Gemini API"],
+    year: "2024",
+    links: {
+      github: "https://github.com/Leeonleee/midpoint",
+      // live: "#",
+    },
+  },
+  {
+    id: 2,
+    title: "AI Survey Creation Platform",
+    description: "Full-stack web application that generates high-quality surveys from a given research question",
+    tech: ["React", "Node.js", "Express.js", "Qualtrics API", "Gemini API"],
+    year: "2024",
+    links: {
+      github: "https://github.com/Leeonleee/survey-generation-app",
+    },
+  },
+  {
+    id: 3,
+    title: "RISC-V Emulator",
+    description: "Emulator for the RV32I Instruction Set Architecture (ISA), ",
+    tech: ["C"],
+    year: "2023",
+    links: {
+      github: "https://github.com/Leeonleee/risc-v-emulator",
+    },
+  },
+  {
+    id: 4,
+    title: "Mobile App",
+    description: "Cross-platform mobile application.",
+    tech: ["React Native", "TypeScript", "PostgreSQL"],
+    year: "2025",
+    links: {
+      github: "https://github.com/Leeonleee/amble",
+    },
+  },
+];
+
+const experience = [
+  {
+    role: "Software Engineer Intern",
+    company: "Oracle",
+    period: "Jan. 2026 — Present",
+    description: "Full-stack.",
+  },
+  {
+    role: "Research Intern",
+    company: "The University of Sydney",
+    period: "Dec. 2024 — Feb. 2025",
+    description: "Building a database management system (DBMS) using generative AI.",
+  },
+  {
+    role: "Academic Tutor",
+    company: "The University of Sydney",
+    period: "Feb. 2024 — Jul. 2024",
+    description: "Tutoring COMP2017: Systems Programming.",
+  },
+];
+
+const SWE = () => {
+  return (
+    <div className="min-h-screen bg-swe text-swe-foreground">
+      <BackButton variant="light" />
+
+      {/* Header */}
+      <header className="pt-24 pb-16 px-8 md:px-16 lg:px-24 border-b-2 border-swe-foreground/20">
+        <div className="max-w-6xl mx-auto">
+          <span className="text-brutal-xs opacity-60 block mb-4">SOFTWARE ENGINEERING</span>
+          <h1 className="text-brutal-lg mb-6">SWE</h1>
+          <p className="text-lg md:text-xl opacity-80 max-w-2xl font-mono">
+            Building things that matter. Focused on clean code, scalable architecture, and delivering value.
+          </p>
+        </div>
+      </header>
+
+      {/* Experience Section */}
+      <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-swe-foreground/20">
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle number="02" title="Experience" className="text-swe-foreground" />
+
+          <div className="space-y-8">
+            {experience.map((exp, index) => (
+              <div
+                key={index}
+                className="border-l-2 border-swe-foreground pl-6 py-2 animate-slide-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-2">
+                  <h3 className="text-lg font-bold uppercase">{exp.role}</h3>
+                  <span className="text-brutal-xs opacity-60">{exp.period}</span>
+                </div>
+                <p className="text-brutal-sm opacity-70 mb-2">{exp.company}</p>
+                <p className="text-sm opacity-80">{exp.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-swe-foreground/20">
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle number="01" title="Projects" className="text-swe-foreground" />
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {projects.map((project, index) => (
+              <article
+                key={project.id}
+                className="border-2 border-swe-foreground p-6 hover:bg-swe-foreground hover:text-swe group transition-colors duration-200 animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold uppercase">{project.title}</h3>
+                  <span className="text-brutal-xs opacity-60">{project.year}</span>
+                </div>
+
+                <p className="text-sm opacity-80 mb-6 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-brutal-xs px-2 py-1 border border-current opacity-70"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-4">
+                  {project.links.github && (
+                    <a
+                      href={project.links.github}
+                      className="flex items-center gap-2 text-brutal-xs hover:opacity-60 transition-opacity"
+                    >
+                      <Github className="w-4 h-4" />
+                      <span>Code</span>
+                    </a>
+                  )}
+                  {project.links.live && (
+                    <a
+                      href={project.links.live}
+                      className="flex items-center gap-2 text-brutal-xs hover:opacity-60 transition-opacity"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span>Live</span>
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
+
+      {/* Contact Section */}
+      <section className="py-16 px-8 md:px-16 lg:px-24">
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle number="03" title="Contact" className="text-swe-foreground" />
+
+          <div className="flex flex-wrap gap-8">
+            <a
+              href="mailto:contact@leonlee.io"
+              className="text-brutal-sm brutalist-link"
+            >
+              Email
+            </a>
+            <a
+              href="https://github.com/Leeonleee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brutal-sm brutalist-link"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/leonlee1219"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brutal-sm brutalist-link"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="#"
+              className="text-brutal-sm brutalist-link"
+            >
+              Resume
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-8 md:px-16 lg:px-24 border-t-2 border-swe-foreground/20">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <span className="text-brutal-xs opacity-60">© 2026</span>
+          <span className="text-brutal-xs opacity-60">Leon Lee</span>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default SWE;

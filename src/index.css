@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BRUTALIST DESIGN SYSTEM
+   Raw. Harsh. Honest. No decoration.
+   Everything is intentional and exposed.
+*/
+
+@layer base {
+  :root {
+    /* Core brutalist palette - pure black and white */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 0% 0%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 0 0% 0%;
+
+    /* Zero radius - brutalist has no soft edges */
+    --radius: 0;
+
+    /* Split screen colors */
+    --swe-bg: 0 0% 0%;
+    --swe-fg: 0 0% 100%;
+    --personal-bg: 0 0% 100%;
+    --personal-fg: 0 0% 0%;
+
+    /* Sidebar - keeping for compatibility */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 0%;
+    --sidebar-ring: 0 0% 0%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 0% 100%;
+    --destructive-foreground: 0 0% 0%;
+
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 0 0% 100%;
+
+    --swe-bg: 0 0% 100%;
+    --swe-fg: 0 0% 0%;
+    --personal-bg: 0 0% 0%;
+    --personal-fg: 0 0% 100%;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100%;
+    --sidebar-ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono antialiased;
+  }
+
+  /* Brutalist typography - harsh, direct */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono font-bold tracking-tight uppercase;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-foreground text-background;
+  }
+}
+
+@layer components {
+  /* Brutalist link style - underline on hover */
+  .brutalist-link {
+    @apply relative inline-block;
+  }
+
+  .brutalist-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-200;
+  }
+
+  .brutalist-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Split panel hover effect - subtle scale */
+  .split-panel {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .split-panel:hover {
+    @apply flex-[1.1];
+  }
+
+  /* Brutalist border */
+  .brutalist-border {
+    @apply border-2 border-current;
+  }
+
+  /* Grid overlay effect */
+  .grid-overlay {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+@layer utilities {
+  /* Brutalist text sizes */
+  .text-brutal-xs {
+    @apply text-[10px] uppercase tracking-[0.2em];
+  }
+
+  .text-brutal-sm {
+    @apply text-xs uppercase tracking-[0.15em];
+  }
+
+  .text-brutal-lg {
+    @apply text-4xl md:text-6xl lg:text-8xl uppercase tracking-tighter leading-none;
+  }
+
+  .text-brutal-xl {
+    @apply text-5xl md:text-7xl lg:text-9xl uppercase tracking-tighter leading-none;
+  }
+}
