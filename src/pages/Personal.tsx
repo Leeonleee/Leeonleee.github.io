@@ -54,27 +54,6 @@ const Personal = () => {
           </p>
         </div>
       </header>
-
-      {/* Tech Interests Section */}
-      <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-personal-foreground/20">
-        <div className="max-w-6xl mx-auto">
-          <SectionTitle number="01" title="Tech" className="text-personal-foreground" />
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {techInterests.map((interest, index) => (
-              <div
-                key={interest.title}
-                className="border-2 border-personal-foreground p-6 hover:bg-personal-foreground hover:text-personal group transition-colors duration-200 animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <h3 className="text-xl font-bold uppercase mb-3">{interest.title}</h3>
-                <p className="text-sm opacity-80 leading-relaxed">{interest.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PC Setup Section */}
       <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-personal-foreground/20">
         <div className="max-w-6xl mx-auto">
@@ -108,9 +87,30 @@ const Personal = () => {
           </div> */}
         </div>
       </section>
+      {/* Tech Interests Section */}
+      <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-personal-foreground/20">
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle number="01" title="Tech" className="text-personal-foreground" />
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {techInterests.map((interest, index) => (
+              <div
+                key={interest.title}
+                className="border-2 border-personal-foreground p-6 hover:bg-personal-foreground hover:text-personal group transition-colors duration-200 animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <h3 className="text-xl font-bold uppercase mb-3">{interest.title}</h3>
+                <p className="text-sm opacity-80 leading-relaxed">{interest.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Photography Section */}
-      
+
       {/* <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-personal-foreground/20">
         <div className="max-w-6xl mx-auto">
           <SectionTitle number="03" title="Photography" className="text-personal-foreground" />
@@ -120,8 +120,8 @@ const Personal = () => {
             <p className="text-sm opacity-80">Random photos.</p>
           </div> */}
 
-          {/* Photo categories */}
-          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      {/* Photo categories */}
+      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {photoCategories.map((cat, index) => (
               <div
                 key={cat.name}
@@ -134,8 +134,8 @@ const Personal = () => {
             ))}
           </div> */}
 
-          {/* Photo grid placeholder */}
-          {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {/* Photo grid placeholder */}
+      {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
