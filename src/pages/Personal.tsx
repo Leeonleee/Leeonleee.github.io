@@ -228,7 +228,10 @@ const Personal = () => {
                                 </div>
 
                                 {activeTech && (
-                                    <div className="mt-8 border-2 border-personal-foreground p-6 animate-fade-in">
+                                    <div
+                                        className="mt-8 border-2 border-personal-foreground p-6 animate-fade-in"
+                                        style={{ animationDuration: "150ms" }}
+                                    >
                                         {techInterests
                                             .filter((interest) => interest.title === activeTech)
                                             .map((interest) => (
