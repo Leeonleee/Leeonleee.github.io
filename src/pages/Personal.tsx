@@ -301,6 +301,7 @@ const Personal = () => {
             {activeImage && (
                 <div
                     className="fixed inset-0 z-50 bg-personal/90 backdrop-blur-sm flex items-center justify-center p-6 animate-fade-in"
+                    style={{ animationDuration: "150ms" }}
                     role="dialog"
                     aria-modal="true"
                     onClick={() => setActiveImage(null)}
