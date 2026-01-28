@@ -386,7 +386,7 @@ const Personal = () => {
                                         ...photo,
                                         alt: `${activeCategory} ${photo.name}`,
                                     }))}
-                                    columnsClassName="columns-1 sm:columns-2 md:columns-3 gap-4"
+                                    columnsClassName="grid grid-cols-1 sm:grid-cols-3 gap-4"
                                     itemClassName="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
                                     imageClassName="h-auto w-full"
                                     onSelect={handleImageSelect}
