@@ -71,10 +71,7 @@ Object.values(photosByCategory).forEach((photos) => {
 const Personal = () => {
     const [activeTech, setActiveTech] = useState<string | null>(null);
 
-    const [activeCategory, setActiveCategory] = useState(
-        photoCategoryOrder.find((name) => (photosByCategory[name] || []).length > 0) ||
-        photoCategoryOrder[0],
-    );
+    const [activeCategory, setActiveCategory] = useState("");
 
     const activePhotos = useMemo(
         () => photosByCategory[activeCategory] || [],
@@ -216,7 +213,9 @@ const Personal = () => {
                                 key={name}
                                 className={`border-2 border-personal-foreground p-4 text-center transition-colors duration-200 cursor-pointer animate-fade-in ${isActive ? "bg-personal-foreground text-personal" : "hover:bg-personal-foreground hover:text-personal"}`}
                                 style={{ animationDelay: `${index * 100}ms` }}
-                                onClick={() => setActiveCategory(name)}
+                                onClick={() =>
+                                    setActiveCategory(isActive ? "" : name)
+                                }
                             >
                                 <span className="text-brutal-xs opacity-60 block mb-1">{count} photos</span>
                                 <span className="text-lg font-bold uppercase">{name}</span>
@@ -226,27 +225,29 @@ const Personal = () => {
                     </div>
 
                     {/* Photo grid */}
-                    <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
-                        {activePhotos.length === 0 ? (
-                            <div className="w-full border-2 border-personal-foreground p-6 text-center text-sm opacity-70">
-                                No photos found for {activeCategory}. Add files to src/assets/photography/{activeCategory}/01-06.
-                            </div>
-                        ) : (
-                            activePhotos.map((photo) => (
-                                <div
-                                    key={photo.name}
-                                    className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
-                                >
-                                    <img
-                                        src={photo.url}
-                                        alt={`${activeCategory} ${photo.name}`}
-                                        className="h-auto w-full"
-                                        loading="lazy"
-                                    />
+                    {activeCategory && (
+                        <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
+                            {activePhotos.length === 0 ? (
+                                <div className="w-full border-2 border-personal-foreground p-6 text-center text-sm opacity-70">
+                                    No photos found for {activeCategory}. Add files to src/assets/photography/{activeCategory}/01-06.
                                 </div>
-                            ))
-                        )}
-                    </div>
+                            ) : (
+                                activePhotos.map((photo) => (
+                                    <div
+                                        key={photo.name}
+                                        className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
+                                    >
+                                        <img
+                                            src={photo.url}
+                                            alt={`${activeCategory} ${photo.name}`}
+                                            className="h-auto w-full"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    )}
                 </div>
             </section>
 
