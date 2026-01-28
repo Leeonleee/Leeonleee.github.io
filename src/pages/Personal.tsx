@@ -33,7 +33,7 @@ const techInterests = [
     },
 ];
 
-const photoCategoryOrder = ["Street", "Architecture", "Nature", "Urban", "Portraits"];
+const photoCategoryOrder = ["Nature", "Architecture"];
 
 type PhotoMap = Record<string, { url: string; name: string }[]>;
 
@@ -171,7 +171,7 @@ const Personal = () => {
                     {/* Photo grid */}
                     <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
                         {activePhotos.length === 0 ? (
-                            <div className="col-span-full border-2 border-personal-foreground p-6 text-center text-sm opacity-70">
+                            <div className="w-full border-2 border-personal-foreground p-6 text-center text-sm opacity-70">
                                 No photos found for {activeCategory}. Add files to src/assets/photography/{activeCategory}/01-06.
                             </div>
                         ) : (
