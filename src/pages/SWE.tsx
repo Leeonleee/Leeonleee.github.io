@@ -143,6 +143,8 @@ const SWE = () => {
                   {project.links.github && (
                     <a
                       href={project.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 text-brutal-xs hover:opacity-60 transition-opacity"
                     >
                       <Github className="w-4 h-4" />
