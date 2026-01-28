@@ -52,6 +52,11 @@ const photoFiles = import.meta.glob("../assets/personal/photography/*/*.{jpg,jpe
     import: "default",
 });
 
+const techPhotoFiles = import.meta.glob("../assets/personal/tech/*/*.{jpg,jpeg,png,webp}", {
+    eager: true,
+    import: "default",
+});
+
 const photosByCategory: PhotoMap = Object.entries(photoFiles).reduce<PhotoMap>(
     (acc, [path, mod]) => {
         const match = path.match(/..\/assets\/personal\/photography\/([^/]+)\/([^/]+)$/);
@@ -64,7 +69,24 @@ const photosByCategory: PhotoMap = Object.entries(photoFiles).reduce<PhotoMap>(
     {},
 );
 
+const techPhotosByTitle: PhotoMap = Object.entries(techPhotoFiles).reduce<PhotoMap>(
+    (acc, [path, mod]) => {
+        const match = path.match(/..\/assets\/personal\/tech\/([^/]+)\/([^/]+)$/);
+        if (!match) return acc;
+        const [, title, filename] = match;
+        const normalizedTitle = title.replace(/_/g, " ");
+        if (!acc[normalizedTitle]) acc[normalizedTitle] = [];
+        acc[normalizedTitle].push({ url: mod as string, name: filename });
+        return acc;
+    },
+    {},
+);
+
 Object.values(photosByCategory).forEach((photos) => {
+    photos.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+});
+
+Object.values(techPhotosByTitle).forEach((photos) => {
     photos.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
 });
 
@@ -174,12 +196,17 @@ const Personal = () => {
                                             </ul>
                                         </div>
                                         <div className="grid grid-cols-3 gap-3">
-                                            {Array.from({ length: interest.details.photoSlots }).map((_, i) => (
+                                            {(techPhotosByTitle[interest.title] || []).map((photo) => (
                                                 <div
-                                                    key={i}
-                                                    className="aspect-square border-2 border-personal-foreground flex items-center justify-center text-brutal-xs opacity-50"
+                                                    key={photo.name}
+                                                    className="aspect-square border-2 border-personal-foreground overflow-hidden bg-personal/30"
                                                 >
-                                                    [ PHOTO ]
+                                                    <img
+                                                        src={photo.url}
+                                                        alt={`${interest.title} ${photo.name}`}
+                                                        className="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                    />
                                                 </div>
                                             ))}
                                         </div>
