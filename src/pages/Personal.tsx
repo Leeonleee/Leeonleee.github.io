@@ -195,16 +195,16 @@ const Personal = () => {
                                                 ))}
                                             </ul>
                                         </div>
-                                        <div className="grid grid-cols-3 gap-3">
+                                        <div className="columns-2 sm:columns-3 gap-3">
                                             {(techPhotosByTitle[interest.title] || []).map((photo) => (
                                                 <div
                                                     key={photo.name}
-                                                    className="aspect-square border-2 border-personal-foreground overflow-hidden bg-personal/30"
+                                                    className="mb-3 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30"
                                                 >
                                                     <img
                                                         src={photo.url}
                                                         alt={`${interest.title} ${photo.name}`}
-                                                        className="h-full w-full object-cover"
+                                                        className="h-auto w-full"
                                                         loading="lazy"
                                                     />
                                                 </div>
