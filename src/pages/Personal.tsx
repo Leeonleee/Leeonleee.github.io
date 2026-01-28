@@ -8,7 +8,7 @@ import MasonryImageGrid from "@/components/MasonryImageGrid";
 import ImageLightbox from "@/components/ImageLightbox";
 
 
-const sectionOrder = ["Setup", "Tech", "Crochet", "Photography"] as const;
+const sectionOrder = ["Setup", "Tech", "Photography", "Crochet"] as const;
 
 const setup = [
     {
