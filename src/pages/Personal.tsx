@@ -2,6 +2,10 @@ import { useMemo, useState } from "react";
 import { Camera, Monitor, Cpu, Keyboard } from "lucide-react";
 import BackButton from "@/components/BackButton";
 import SectionTitle from "@/components/SectionTitle";
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
+import MasonryImageGrid from "@/components/MasonryImageGrid";
+import ImageLightbox from "@/components/ImageLightbox";
 
 const setup = [
     {
@@ -101,20 +105,24 @@ const Personal = () => {
         [activeCategory],
     );
 
+    const handleImageSelect = (item: { url: string; name: string; alt?: string }) => {
+        setActiveImage({
+            url: item.url,
+            alt: item.alt ?? item.name,
+        });
+    };
+
     return (
         <div className="min-h-screen bg-personal text-personal-foreground">
             <BackButton variant="dark" />
 
             {/* Header */}
-            <header className="pt-24 pb-16 px-8 md:px-16 lg:px-24 border-b-2 border-personal-foreground/20">
-                <div className="max-w-6xl mx-auto">
-                    <span className="text-brutal-xs opacity-60 block mb-4">PERSONAL INTERESTS</span>
-                    <h1 className="text-brutal-lg mb-6">Life</h1>
-                    <p className="text-lg md:text-xl opacity-80 max-w-2xl font-mono">
-                        Things that interest me.
-                    </p>
-                </div>
-            </header>
+            <PageHeader
+                label="PERSONAL INTERESTS"
+                title="Life"
+                subtitle="Things that interest me."
+                className="border-personal-foreground/20"
+            />
             {/* PC Setup Section */}
             <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-personal-foreground/20">
                 <div className="max-w-6xl mx-auto">
@@ -196,28 +204,16 @@ const Personal = () => {
                                                 ))}
                                             </ul>
                                         </div>
-                                        <div className="columns-2 sm:columns-3 gap-3">
-                                            {(techPhotosByTitle[interest.title] || []).map((photo) => (
-                                                <button
-                                                    type="button"
-                                                    key={photo.name}
-                                                    className="mb-3 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
-                                                    onClick={() =>
-                                                        setActiveImage({
-                                                            url: photo.url,
-                                                            alt: `${interest.title} ${photo.name}`,
-                                                        })
-                                                    }
-                                                >
-                                                    <img
-                                                        src={photo.url}
-                                                        alt={`${interest.title} ${photo.name}`}
-                                                        className="h-auto w-full"
-                                                        loading="lazy"
-                                                    />
-                                                </button>
-                                            ))}
-                                        </div>
+                                        <MasonryImageGrid
+                                            items={(techPhotosByTitle[interest.title] || []).map((photo) => ({
+                                                ...photo,
+                                                alt: `${interest.title} ${photo.name}`,
+                                            }))}
+                                            columnsClassName="columns-2 sm:columns-3 gap-3"
+                                            itemClassName="mb-3 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
+                                            imageClassName="h-auto w-full"
+                                            onSelect={handleImageSelect}
+                                        />
                                     </div>
                                 ))}
                         </div>
@@ -264,76 +260,33 @@ const Personal = () => {
 
                     {/* Photo grid */}
                     {activeCategory && activePhotos.length > 0 && (
-                        <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
-                            {activePhotos.map((photo) => (
-                                <button
-                                    type="button"
-                                    key={photo.name}
-                                    className="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
-                                    onClick={() =>
-                                        setActiveImage({
-                                            url: photo.url,
-                                            alt: `${activeCategory} ${photo.name}`,
-                                        })
-                                    }
-                                >
-                                    <img
-                                        src={photo.url}
-                                        alt={`${activeCategory} ${photo.name}`}
-                                        className="h-auto w-full"
-                                        loading="lazy"
-                                    />
-                                </button>
-                            ))}
-                        </div>
+                        <MasonryImageGrid
+                            items={activePhotos.map((photo) => ({
+                                ...photo,
+                                alt: `${activeCategory} ${photo.name}`,
+                            }))}
+                            columnsClassName="columns-1 sm:columns-2 md:columns-3 gap-4"
+                            itemClassName="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
+                            imageClassName="h-auto w-full"
+                            onSelect={handleImageSelect}
+                        />
                     )}
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="py-8 px-8 md:px-16 lg:px-24 border-t-2 border-personal-foreground/20">
-                <div className="max-w-6xl mx-auto flex justify-between items-center">
-                    <span className="text-brutal-xs opacity-60">© 2026</span>
-                    <span className="text-brutal-xs opacity-60">Leon Lee</span>
-                </div>
-            </footer>
+            <PageFooter className="border-personal-foreground/20" />
 
-            {activeImage && (
-                <div
-                    className="fixed inset-0 z-50 bg-personal/90 backdrop-blur-sm flex items-center justify-center p-6 animate-fade-in"
-                    style={{ animationDuration: "150ms" }}
-                    role="dialog"
-                    aria-modal="true"
-                    onClick={() => setActiveImage(null)}
-                    onKeyDown={(event) => {
-                        if (event.key === "Escape") setActiveImage(null);
-                    }}
-                    tabIndex={-1}
-                >
-                    <div className="max-w-6xl w-full" onClick={(event) => event.stopPropagation()}>
-                        <div className="flex justify-end mb-4">
-                            <button
-                                type="button"
-                                className="border-2 border-personal-foreground px-4 py-2 text-sm uppercase hover:bg-personal-foreground hover:text-personal transition-colors duration-200"
-                                onClick={() => setActiveImage(null)}
-                            >
-                                Close
-                            </button>
-                        </div>
-                        <div className="flex justify-center">
-                            <div className="inline-block border-2 border-personal-foreground bg-personal p-2">
-                                <div className="border-2 border-white bg-white p-1">
-                                    <img
-                                        src={activeImage.url}
-                                        alt={activeImage.alt}
-                                        className="block max-h-[80vh] max-w-full h-auto w-auto"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <ImageLightbox
+                image={activeImage}
+                onClose={() => setActiveImage(null)}
+                overlayClassName="bg-personal/90 backdrop-blur-sm animate-fade-in"
+                closeButtonClassName="border-personal-foreground hover:bg-personal-foreground hover:text-personal"
+                frameClassName="border-2 border-personal-foreground bg-personal p-2"
+                innerFrameClassName="border-2 border-white bg-white p-1"
+                imageClassName="block max-h-[80vh] max-w-full h-auto w-auto"
+                animationDurationMs={150}
+            />
         </div>
     );
 };

@@ -1,6 +1,8 @@
 import { ExternalLink, Github } from "lucide-react";
 import BackButton from "@/components/BackButton";
 import SectionTitle from "@/components/SectionTitle";
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
 
 const projects = [
   {
@@ -73,15 +75,12 @@ const SWE = () => {
       <BackButton variant="light" />
 
       {/* Header */}
-      <header className="pt-24 pb-16 px-8 md:px-16 lg:px-24 border-b-2 border-swe-foreground/20">
-        <div className="max-w-6xl mx-auto">
-          <span className="text-brutal-xs opacity-60 block mb-4">SOFTWARE ENGINEERING</span>
-          <h1 className="text-brutal-lg mb-6">SWE</h1>
-          <p className="text-lg md:text-xl opacity-80 max-w-2xl font-mono">
-            Building things that matter. Focused on clean code, scalable architecture, and delivering value.
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        label="SOFTWARE ENGINEERING"
+        title="SWE"
+        subtitle="Building things that matter. Focused on clean code, scalable architecture, and delivering value."
+        className="border-swe-foreground/20"
+      />
 
       {/* Experience Section */}
       <section className="py-16 px-8 md:px-16 lg:px-24 border-b-2 border-swe-foreground/20">
@@ -208,12 +207,7 @@ const SWE = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-8 md:px-16 lg:px-24 border-t-2 border-swe-foreground/20">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <span className="text-brutal-xs opacity-60">© 2026</span>
-          <span className="text-brutal-xs opacity-60">Leon Lee</span>
-        </div>
-      </footer>
+      <PageFooter className="border-swe-foreground/20" />
     </div>
   );
 };
