@@ -70,7 +70,7 @@ const ImageLightbox = ({
                     </div>
                     {hasCaption && (
                         <div className={`w-full md:max-w-sm ${captionClassName}`}>
-                            <ul className={`list-disc pl-5 space-y-2 text-sm ${captionListClassName}`}>
+                            <ul className={`list-disc pl-5 space-y-2 text-base ${captionListClassName}`}>
                                 {image.caption?.map((item, index) => (
                                     <li key={`${item}-${index}`}>{item}</li>
                                 ))}
