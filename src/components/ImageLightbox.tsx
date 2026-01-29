@@ -1,6 +1,7 @@
-type LightboxImage = {
+export type LightboxImage = {
     url: string;
     alt: string;
+    caption?: string[];
 };
 
 type ImageLightboxProps = {
@@ -11,6 +12,8 @@ type ImageLightboxProps = {
     frameClassName?: string;
     innerFrameClassName?: string;
     imageClassName?: string;
+    captionClassName?: string;
+    captionListClassName?: string;
     animationDurationMs?: number;
 };
 
@@ -22,9 +25,12 @@ const ImageLightbox = ({
     frameClassName = "",
     innerFrameClassName = "",
     imageClassName = "",
+    captionClassName = "",
+    captionListClassName = "",
     animationDurationMs,
 }: ImageLightboxProps) => {
     if (!image) return null;
+    const hasCaption = Boolean(image.caption && image.caption.length > 0);
 
     return (
         <div
@@ -50,7 +56,9 @@ const ImageLightbox = ({
                         Close
                     </button>
                 </div>
-                <div className="flex justify-center">
+                <div
+                    className={`flex ${hasCaption ? "flex-col md:flex-row gap-6 items-center md:items-start" : "justify-center"}`}
+                >
                     <div className={`inline-block ${frameClassName}`}>
                         <div className={innerFrameClassName}>
                             <img
@@ -60,6 +68,15 @@ const ImageLightbox = ({
                             />
                         </div>
                     </div>
+                    {hasCaption && (
+                        <div className={`w-full md:max-w-sm ${captionClassName}`}>
+                            <ul className={`list-disc pl-5 space-y-2 text-sm ${captionListClassName}`}>
+                                {image.caption?.map((item, index) => (
+                                    <li key={`${item}-${index}`}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

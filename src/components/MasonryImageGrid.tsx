@@ -2,6 +2,7 @@ type MasonryItem = {
     url: string;
     name: string;
     alt?: string;
+    caption?: string[];
 };
 
 type MasonryImageGridProps = {

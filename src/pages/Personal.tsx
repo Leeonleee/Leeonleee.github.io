@@ -5,7 +5,7 @@ import SectionTitle from "@/components/SectionTitle";
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
 import MasonryImageGrid from "@/components/MasonryImageGrid";
-import ImageLightbox from "@/components/ImageLightbox";
+import ImageLightbox, { type LightboxImage } from "@/components/ImageLightbox";
 
 
 const sectionOrder = ["Setup", "Tech", "Photography", "Crochet"] as const;
@@ -52,6 +52,13 @@ const techInterests = [
 
 const photoCategoryOrder = ["Nature", "Architecture", "Portraits"];
 const crochetCategoryOrder = ["Amigurumi", "Wearables"];
+
+// Key format: "CategoryOrTitle/filename.ext".
+const photoCaptions: Record<string, string[]> = {
+    "Nature/01.jpg": ["Location: Luxembourg", "Camera: Fujifilm X-H2S", "Lens: XF 18-55mm F2.8-4 R LM OIS"],
+};
+const techCaptions: Record<string, string[]> = {};
+const crochetCaptions: Record<string, string[]> = {};
 
 const crochetEquipment = [
     "Clover Amour hooks",
@@ -131,7 +138,7 @@ const Personal = () => {
 
     const [activeCategory, setActiveCategory] = useState("");
     const [activeCrochetCategory, setActiveCrochetCategory] = useState("");
-    const [activeImage, setActiveImage] = useState<{ url: string; alt: string } | null>(null);
+    const [activeImage, setActiveImage] = useState<LightboxImage | null>(null);
 
     const activePhotos = useMemo(
         () => photosByCategory[activeCategory] || [],
@@ -143,10 +150,11 @@ const Personal = () => {
         [activeCrochetCategory],
     );
 
-    const handleImageSelect = (item: { url: string; name: string; alt?: string }) => {
+    const handleImageSelect = (item: { url: string; name: string; alt?: string; caption?: string[] }) => {
         setActiveImage({
             url: item.url,
             alt: item.alt ?? item.name,
+            caption: item.caption,
         });
     };
 
@@ -258,6 +266,7 @@ const Personal = () => {
                                                         items={(techPhotosByTitle[interest.title] || []).map((photo) => ({
                                                             ...photo,
                                                             alt: `${interest.title} ${photo.name}`,
+                                                            caption: techCaptions[`${interest.title}/${photo.name}`],
                                                         }))}
                                                         columnsClassName="columns-2 sm:columns-3 gap-3"
                                                         itemClassName="mb-3 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
@@ -286,7 +295,7 @@ const Personal = () => {
                                     <div className="border-2 border-personal-foreground p-6">
                                         <h3 className="text-lg font-bold uppercase mb-3">About</h3>
                                         <p className="text-sm opacity-80 leading-relaxed">
-                                            Small projects and gifts I make to unwind. Mostly cute creatures and wearables.
+                                            Small projects and gifts I make. Mostly cute creatures and wearables.
                                         </p>
                                     </div>
                                     <div className="border-2 border-personal-foreground p-6">
@@ -332,6 +341,7 @@ const Personal = () => {
                                         items={activeCrochetPhotos.map((photo) => ({
                                             ...photo,
                                             alt: `${activeCrochetCategory} ${photo.name}`,
+                                            caption: crochetCaptions[`${activeCrochetCategory}/${photo.name}`],
                                         }))}
                                         columnsClassName="columns-1 sm:columns-2 md:columns-3 gap-4"
                                         itemClassName="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
@@ -385,6 +395,7 @@ const Personal = () => {
                                     items={activePhotos.map((photo) => ({
                                         ...photo,
                                         alt: `${activeCategory} ${photo.name}`,
+                                        caption: photoCaptions[`${activeCategory}/${photo.name}`],
                                     }))}
                                     columnsClassName="grid grid-cols-1 sm:grid-cols-3 gap-4"
                                     itemClassName="mb-4 break-inside-avoid border-2 border-personal-foreground overflow-hidden bg-personal/30 w-full text-left"
@@ -408,6 +419,7 @@ const Personal = () => {
                 frameClassName="border-2 border-personal-foreground bg-personal p-2"
                 innerFrameClassName="border-2 border-white bg-white p-1"
                 imageClassName="block max-h-[80vh] max-w-full h-auto w-auto"
+                captionListClassName="text-personal-foreground/80"
                 animationDurationMs={150}
             />
         </div>

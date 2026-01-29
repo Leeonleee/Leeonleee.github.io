@@ -30,7 +30,7 @@ const projects = [
     id: 3,
     title: "RISC-V Emulator",
     description: "Emulator for the RV32I Instruction Set Architecture (ISA), ",
-    tech: ["C"],
+    tech: ["C", "Valgrind"],
     year: "2023",
     links: {
       github: "https://github.com/Leeonleee/risc-v-emulator",
@@ -38,7 +38,7 @@ const projects = [
   },
   {
     id: 4,
-    title: "Mobile App",
+    title: "Amble",
     description: "Cross-platform mobile application.",
     tech: ["React Native", "TypeScript", "PostgreSQL"],
     year: "2025",
