@@ -223,7 +223,7 @@ const Personal = () => {
                                             <button
                                                 key={interest.title}
                                                 type="button"
-                                                className="border-2 border-personal-foreground p-6 text-left hover:bg-personal-foreground hover:text-personal group transition-colors duration-200 animate-fade-in"
+                                                className={`border-2 border-personal-foreground p-6 text-left transition-colors duration-200 animate-fade-in ${isOpen ? "bg-personal-foreground text-personal" : "hover:bg-personal-foreground hover:text-personal"}`}
                                                 style={{ animationDelay: `${itemIndex * 100}ms` }}
                                                 onClick={() => setActiveTech(isOpen ? null : interest.title)}
                                                 aria-expanded={isOpen}
