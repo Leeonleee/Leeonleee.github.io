@@ -23,7 +23,7 @@ npm run lint     # run ESLint
 npm test         # run tests
 ```
 
-## Deploy to GitHub Pages
+GitHub Pages
 
 The site deploys to the `gh-pages` branch via the `gh-pages` package.
 

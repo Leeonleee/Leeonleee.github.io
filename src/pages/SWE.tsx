@@ -50,9 +50,15 @@ const projects = [
 
 const experience = [
   {
+    role: "Software Engineer",
+    company: "Volans",
+    period: "Jun. 2026 — Present",
+    description: "Doing everything"
+  },
+  {
     role: "Software Engineer Intern",
     company: "Oracle",
-    period: "Jan. 2026 — Present",
+    period: "Jan. 2026 — Apr. 2026",
     description: "Full-stack.",
   },
   {
