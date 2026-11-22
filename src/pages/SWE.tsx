@@ -4,7 +4,16 @@ import SectionTitle from "@/components/SectionTitle";
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
 
-const projects = [
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  tech: string[];
+  year: string;
+  links: { github?: string; live?: string };
+};
+
+const projects: Project[] = [
   {
     id: 1,
     title: "Midpoint",
@@ -51,8 +60,14 @@ const projects = [
 const experience = [
   {
     role: "Software Engineer",
+    company: "Amazon Web Services",
+    period: "Nov. 2026 — Present",
+    description: "AWS Internet Edge",
+  },
+  {
+    role: "Software Engineer",
     company: "Volans",
-    period: "Jun. 2026 — Present",
+    period: "Jun. 2026 — Nov. 2026",
     description: "Doing everything"
   },
   {
